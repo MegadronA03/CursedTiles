@@ -1,0 +1,176 @@
+[gd_scene load_steps=12 format=3 uid="uid://wuyeafp364mp"]
+
+[ext_resource type="PackedScene" uid="uid://dj26sacnhty4r" path="res://addons/devblocks/blocks/basic_block.tscn" id="1_hi0vw"]
+[ext_resource type="PackedScene" uid="uid://camvcri7e11vi" path="res://addons/devblocks/blocks/colored_block.tscn" id="2_kjslv"]
+[ext_resource type="PackedScene" uid="uid://dxgt7pwn0h0ew" path="res://game/world/tile/chunk.tscn" id="3_8wh6l"]
+[ext_resource type="Shader" path="res://game/world/tile/cluster.gdshader" id="3_diw3t"]
+[ext_resource type="Shader" path="res://game/scenes/PPvoxelsmooth.gdshader" id="3_natel"]
+
+[sub_resource type="Environment" id="Environment_8qhoi"]
+tonemap_mode = 1
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_cascades = 1
+sdfgi_max_distance = 25.6
+sdfgi_y_scale = 2
+glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_by0ay"]
+render_priority = 0
+shader = ExtResource("3_natel")
+
+[sub_resource type="QuadMesh" id="QuadMesh_kffj6"]
+material = SubResource("ShaderMaterial_by0ay")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oiu3y"]
+render_priority = 0
+shader = ExtResource("3_diw3t")
+
+[sub_resource type="QuadMesh" id="QuadMesh_luwje"]
+material = SubResource("ShaderMaterial_oiu3y")
+
+[sub_resource type="QuadMesh" id="QuadMesh_pojgp"]
+flip_faces = true
+orientation = 0
+
+[node name="origins_test" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8qhoi")
+
+[node name="TestMap" type="Node3D" parent="."]
+
+[node name="Title" type="Node3D" parent="TestMap"]
+
+[node name="Camera3d" type="Camera3D" parent="TestMap/Title"]
+fov = 120.0
+
+[node name="BasicBlock2" parent="TestMap/Title" instance=ExtResource("1_hi0vw")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, -1.5, 0, -1)
+block_style = 12
+
+[node name="BasicBlock3" parent="TestMap/Title" instance=ExtResource("1_hi0vw")]
+transform = Transform3D(1.5, 0, 0, 0, 5, 0, 0, 0, 2, 1.75, 0, -2)
+block_style = 12
+
+[node name="BasicBlock4" parent="TestMap/Title" instance=ExtResource("1_hi0vw")]
+transform = Transform3D(3, 0, 0, 0, 6.5, 0, 0, 0, 3, 4, 1.75, -1.5)
+block_style = 12
+
+[node name="BasicBlock5" parent="TestMap/Title" instance=ExtResource("1_hi0vw")]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, -1.75, 0.25, 0)
+block_style = 12
+
+[node name="ColoredBlock2" parent="TestMap/Title" instance=ExtResource("2_kjslv")]
+transform = Transform3D(16, 0, 0, 0, 1, 0, 0, 0, 9, 0, -2, -5.5)
+block_style = 1
+
+[node name="BasicBlock" parent="TestMap/Title" instance=ExtResource("1_hi0vw")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, -1.25, -0.5)
+block_style = 1
+
+[node name="BasicBlock6" parent="TestMap/Title" instance=ExtResource("1_hi0vw")]
+transform = Transform3D(5, 0, 0, 0, 7.5, 0, 0, 0, 3, 1, 2.25, -9.5)
+block_style = 12
+
+[node name="BasicBlock7" parent="TestMap/Title" instance=ExtResource("1_hi0vw")]
+transform = Transform3D(3, 0, 0, 0, 4, 0, 0, 0, 3, -1, 0.5, -8)
+block_style = 12
+
+[node name="BasicBlock8" parent="TestMap/Title" instance=ExtResource("1_hi0vw")]
+transform = Transform3D(5, 0, 0, 0, 8, 0, 0, 0, 3, -4.75, 2.5, -14)
+block_style = 12
+
+[node name="ColoredBlock3" parent="TestMap/Title" instance=ExtResource("2_kjslv")]
+transform = Transform3D(14, 0, 0, 0, 38, 0, 0, 0, 15, 12, 26, -16)
+block_style = 1
+
+[node name="ColoredBlock4" parent="TestMap/Title" instance=ExtResource("2_kjslv")]
+transform = Transform3D(207.68, 0, 0, 0, 1, 0, 0, 0, 23.328, 0, -6, -12.5)
+block_style = 1
+
+[node name="BasicBlock9" parent="TestMap/Title" instance=ExtResource("1_hi0vw")]
+transform = Transform3D(15, 0, 0, 0, 64, 0, 0, 0, 9, 0.0854015, 13.5126, -21.8109)
+block_style = 12
+
+[node name="BasicBlock10" parent="TestMap/Title" instance=ExtResource("1_hi0vw")]
+transform = Transform3D(144, 0, 0, 0, 32.256, 0, 0, 0, 9, -49.9146, 19.5126, -26.8109)
+block_style = 12
+
+[node name="ColoredBlock5" parent="TestMap/Title" instance=ExtResource("2_kjslv")]
+transform = Transform3D(20.768, 0, 0, 0, 1, 0, 0, 0, 134.369, 0.0242996, -3.79942, 61.3546)
+block_style = 1
+
+[node name="ColoredBlock6" parent="TestMap/Title" instance=ExtResource("2_kjslv")]
+transform = Transform3D(4.2, 0, 0, 0, 30.4, 0, 0, 0, 34.5, 21, 29, 1)
+block_style = 1
+
+[node name="Hub" type="Node3D" parent="TestMap"]
+
+[node name="SpawnZone" parent="TestMap/Hub" instance=ExtResource("2_kjslv")]
+transform = Transform3D(4, 0, 0, 0, 1.125, 0, 0, 0, 6, 0, -1.25, 8)
+
+[node name="Ground" parent="TestMap/Hub" instance=ExtResource("1_hi0vw")]
+transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 15, 0, -1.25, 7.5)
+block_style = 1
+
+[node name="VoxelSandbox" type="Node3D" parent="TestMap"]
+
+[node name="BasicBlock" parent="TestMap/VoxelSandbox" instance=ExtResource("1_hi0vw")]
+transform = Transform3D(18, 0, 0, 0, 1, 0, 0, 0, 1, 13, -1.25, 0.5)
+block_style = 1
+
+[node name="BasicBlock2" parent="TestMap/VoxelSandbox" instance=ExtResource("1_hi0vw")]
+transform = Transform3D(18, 0, 0, 0, 1, 0, 0, 0, 1, 13, -1.25, 17.5)
+block_style = 1
+
+[node name="BasicBlock3" parent="TestMap/VoxelSandbox" instance=ExtResource("1_hi0vw")]
+transform = Transform3D(18, 0, 0, 0, 1, 0, 0, 0, 18, 13, -2.25, 9)
+block_color_group = 4
+block_style = 1
+
+[node name="BasicBlock4" parent="TestMap/VoxelSandbox" instance=ExtResource("1_hi0vw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 16, 4.5, -1.25, 9)
+block_style = 1
+
+[node name="BasicBlock5" parent="TestMap/VoxelSandbox" instance=ExtResource("1_hi0vw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 16, 21.5, -1.25, 9)
+block_style = 1
+
+[node name="chunck" parent="TestMap/VoxelSandbox" instance=ExtResource("3_8wh6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.73064, -1.20426, 1.76243)
+
+[node name="ShaderTest" type="Node3D" parent="TestMap"]
+
+[node name="Ground" parent="TestMap/ShaderTest" instance=ExtResource("1_hi0vw")]
+transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 15, -8, -1.25, 7.5)
+block_color_group = 3
+
+[node name="PostProcessing" type="MeshInstance3D" parent="TestMap/ShaderTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.53593, -0.196453, 10.9962)
+visible = false
+cast_shadow = 0
+mesh = SubResource("QuadMesh_kffj6")
+skeleton = NodePath("../ImposorSpher0")
+
+[node name="ImposorSpher0" type="MeshInstance3D" parent="TestMap/ShaderTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.1631, -0.238839, 10.0486)
+cast_shadow = 0
+custom_aabb = AABB(0, 0, 0, 1, 1, 1)
+mesh = SubResource("QuadMesh_luwje")
+
+[node name="ImposorSpher1" type="MeshInstance3D" parent="TestMap/ShaderTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.36985, -0.567358, 10.3803)
+cast_shadow = 0
+custom_aabb = AABB(0, 0, 0, 1, 1, 1)
+mesh = SubResource("QuadMesh_luwje")
+skeleton = NodePath("../ImposorSpher0")
+
+[node name="QuadMesh" type="MeshInstance3D" parent="TestMap/ShaderTest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.65418, -0.29088, 10.4805)
+cast_shadow = 0
+custom_aabb = AABB(0, 0, 0, 1, 1, 1)
+mesh = SubResource("QuadMesh_pojgp")
+skeleton = NodePath("../ImposorSpher0")
