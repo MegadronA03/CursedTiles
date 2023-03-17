@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://wuyeafp364mp"]
+[gd_scene load_steps=14 format=3 uid="uid://wuyeafp364mp"]
 
 [ext_resource type="PackedScene" uid="uid://dj26sacnhty4r" path="res://addons/devblocks/blocks/basic_block.tscn" id="1_hi0vw"]
 [ext_resource type="PackedScene" uid="uid://camvcri7e11vi" path="res://addons/devblocks/blocks/colored_block.tscn" id="2_kjslv"]
@@ -6,16 +6,30 @@
 [ext_resource type="Shader" path="res://game/world/tile/cluster.gdshader" id="3_diw3t"]
 [ext_resource type="Shader" path="res://game/scenes/PPvoxelsmooth.gdshader" id="3_natel"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cokm7"]
+sky_top_color = Color(1, 1, 1, 1)
+sky_horizon_color = Color(1, 1, 1, 1)
+ground_bottom_color = Color(0.576471, 0.576471, 0.576471, 1)
+ground_horizon_color = Color(1, 1, 1, 1)
+ground_curve = 0.25
+use_debanding = false
+
+[sub_resource type="Sky" id="Sky_0ki5g"]
+sky_material = SubResource("ProceduralSkyMaterial_cokm7")
+radiance_size = 0
+
 [sub_resource type="Environment" id="Environment_8qhoi"]
+background_mode = 2
+sky = SubResource("Sky_0ki5g")
+sky_rotation = Vector3(-0.785398, 0.785398, 0)
 tonemap_mode = 1
-ssr_enabled = true
-ssao_enabled = true
-ssil_enabled = true
 sdfgi_use_occlusion = true
 sdfgi_cascades = 1
 sdfgi_max_distance = 25.6
 sdfgi_y_scale = 2
-glow_enabled = true
+adjustment_brightness = 2.0
+adjustment_contrast = 3.0
+adjustment_saturation = 0.01
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_by0ay"]
 render_priority = 0
@@ -36,6 +50,11 @@ flip_faces = true
 orientation = 0
 
 [node name="origins_test" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.78152, 0.61896, -0.0781929, 0, 0.125333, 0.992115, 0.62388, 0.775358, -0.0979505, -0.156564, 1.53827, 3.34843)
+shadow_enabled = true
+directional_shadow_mode = 0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8qhoi")
