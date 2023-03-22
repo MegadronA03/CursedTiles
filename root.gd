@@ -6,6 +6,8 @@ var test_scene = preload("res://game/scenes/origins_test.tscn")
 func _ready():
 	set_name("Iroot")
 	var t
+	#$"/root".size = Vector2i(128,128)
+	#$"/root".scaling_3d_scale = 0.25
 	#var c
 	t = test_scene.instantiate()
 	add_child(t)
