@@ -10,6 +10,12 @@ func _ready():
 	#$"/root".size = Vector2i(128,128)
 	#$"/root".scaling_3d_scale = 0.25
 	#var c
+	if OS.has_feature("mobile"): #if mobile (should be used for enabeling touch controls)
+		#https://docs.godotengine.org/en/latest/tutorials/inputs/inputevent.htmls
+		#https://docs.godotengine.org/en/latest/classes/class_inputeventscreentouch.html
+		#top left conner drag to open console
+		pass
+	
 	t = test_scene.instantiate()
 	add_child(t)
 	#var w = WorldEnvironment.new()
