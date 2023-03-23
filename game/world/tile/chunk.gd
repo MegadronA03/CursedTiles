@@ -45,7 +45,7 @@ func _ready():
 	self._visualBody.mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, self.meshdata)
 	var shmat = ShaderMaterial.new()
 	shmat.create_placeholder()
-	_visualBody.material_override = shmat
+	self._visualBody.material_override = shmat
 	#self._visualBody.multimesh.mesh.material.
 	self.update()
 

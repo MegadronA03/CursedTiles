@@ -50,7 +50,6 @@ adjustment_saturation = 0.01
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_veymd"]
 auto_exposure_enabled = true
-auto_exposure_scale = 0.25
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_by0ay"]
 render_priority = 0

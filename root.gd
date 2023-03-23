@@ -1,3 +1,4 @@
+class_name GStart
 extends Control
 #@onready
 var test_scene = preload("res://game/scenes/origins_test.tscn")
