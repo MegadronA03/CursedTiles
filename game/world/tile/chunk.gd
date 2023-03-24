@@ -5,10 +5,20 @@ extends Node3D
 @export var DbgUpdate := false
 
 var palette := PackedInt32Array()
-var neighbours := [].resize(7)
+var neighbours := [self,null,null,null,null,null,null,null].resize(7)
 const buffdim = Vector3i(8,4,8) #that should be constant
 var buffer := PackedInt32Array() #256 size should be constant
 var meshdata := []
+#TODO: move RenderingDevice and compute shaders to world.gd class,
+# so this wont take unreasonable ammount of space
+var rd := RenderingServer.create_local_rendering_device()
+const meshgen_csh := [
+	#preload("res://game/world/tile/fully_threaded.glsl"),
+	#preload("res://game/world/tile/parial_theaded.glsl")
+	preload("res://game/world/tile/test.glsl")
+]
+var rd_context : RID
+var meshgen_cbc := []
 @onready var _visualBody := $visualBody
 
 func update():
@@ -30,6 +40,20 @@ func update():
 					#self._visualBody.multimesh.set_instance_custom_data(id, Color(self.buffer[id], 0, 0)) #self.buffer[x][y][z]
 					#self._visualBody.multimesh.set_instance_transform(id, Transform3D(Basis(), pos))
 
+func csh_compile(): #precompile things
+	for i in range(meshgen_csh.size()):
+		var shader_file : RDShaderFile = meshgen_csh[i]
+		var shader_spirv := shader_file.get_spirv()
+		meshgen_cbc[i] = rd.shader_compile_binary_from_spirv(shader_spirv)
+
+func csh_update_context(cbc : PackedByteArray):
+	if not rd_context.is_valid():# or rd.compute_pipeline_is_valid(rd_context):
+		rd_context = rd.shader_create_from_bytecode(cbc)
+	
+
+func update_model():
+	pass
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.buffer.resize(
@@ -37,6 +61,11 @@ func _ready():
 		self.buffdim.y*
 		self.buffdim.z)
 	self.meshdata.resize(Mesh.ARRAY_MAX)
+	
+	csh_compile()
+	csh_update_context(meshgen_cbc[0])
+	
+	
 	self.meshdata[Mesh.ARRAY_VERTEX] = PackedVector3Array([
 		Vector3(0,0,0),
 		Vector3(1,0,0),
