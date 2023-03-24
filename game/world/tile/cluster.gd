@@ -1,4 +1,3 @@
-@tool
 class_name TileCluster3D
 extends PhysicsBody3D
 
