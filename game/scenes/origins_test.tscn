@@ -1,27 +1,25 @@
-[gd_scene load_steps=15 format=3 uid="uid://wuyeafp364mp"]
+[gd_scene load_steps=17 format=3 uid="uid://wuyeafp364mp"]
 
+[ext_resource type="Shader" path="res://game/skybox.gdshader" id="1_1lrfy"]
 [ext_resource type="PackedScene" uid="uid://dj26sacnhty4r" path="res://addons/devblocks/blocks/basic_block.tscn" id="1_hi0vw"]
+[ext_resource type="CompressedCubemap" uid="uid://6fpfiwkyct35" path="res://TestTextures/CubeMaps/CubeMapNvidiaLayout.jpg" id="2_fyy72"]
 [ext_resource type="PackedScene" uid="uid://camvcri7e11vi" path="res://addons/devblocks/blocks/colored_block.tscn" id="2_kjslv"]
 [ext_resource type="PackedScene" uid="uid://dxgt7pwn0h0ew" path="res://game/world/tile/chunk.tscn" id="3_8wh6l"]
 [ext_resource type="Shader" path="res://game/world/tile/cluster.gdshader" id="3_diw3t"]
 [ext_resource type="Shader" path="res://game/scenes/PPvoxelsmooth.gdshader" id="3_natel"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cokm7"]
-sky_top_color = Color(1, 1, 1, 1)
-sky_horizon_color = Color(1, 1, 1, 1)
-ground_bottom_color = Color(0.576471, 0.576471, 0.576471, 1)
-ground_horizon_color = Color(1, 1, 1, 1)
-ground_curve = 0.25
-use_debanding = false
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_seiwt"]
+shader = ExtResource("1_1lrfy")
+shader_parameter/offset = Vector3(1, 1, 1)
+shader_parameter/skyBox = ExtResource("2_fyy72")
 
 [sub_resource type="Sky" id="Sky_0ki5g"]
-sky_material = SubResource("ProceduralSkyMaterial_cokm7")
+sky_material = SubResource("ShaderMaterial_seiwt")
 radiance_size = 0
 
 [sub_resource type="Environment" id="Environment_8qhoi"]
 background_mode = 2
 sky = SubResource("Sky_0ki5g")
-sky_rotation = Vector3(-0.785398, 0.785398, 0)
 ssr_enabled = true
 ssr_max_steps = 16
 ssao_enabled = true
