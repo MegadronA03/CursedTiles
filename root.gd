@@ -17,7 +17,7 @@ func _ready():
 		
 		#TODO: add these as setting to change
 		rootW.scaling_3d_scale = 0.25
-		rootW.content_scale_factor = 2.0
+		rootW.content_scale_factor = 3.0
 		var l = Console.new()
 		add_child(l)
 	else:

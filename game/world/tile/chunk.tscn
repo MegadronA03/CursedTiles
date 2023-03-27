@@ -5,10 +5,18 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yc4rk"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pao7y"]
+_surfaces = [{
+"aabb": AABB(0, 0, 0, 1, 1e-05, 1),
+"format": 4097,
+"index_count": 3,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0),
+"primitive": 3,
+"vertex_count": 3,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63)
+}]
 
 [node name="chunck" type="Node3D"]
 script = ExtResource("1_ev85p")
-DbgUpdate = false
 
 [node name="visualBody" type="MeshInstance3D" parent="."]
 material_override = SubResource("ShaderMaterial_yc4rk")
