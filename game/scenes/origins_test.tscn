@@ -83,7 +83,8 @@ camera_attributes = SubResource("CameraAttributesPractical_veymd")
 [node name="Title" type="Node3D" parent="TestMap"]
 
 [node name="Camera3d" type="Camera3D" parent="TestMap/Title"]
-fov = 120.0
+keep_aspect = 0
+fov = 160.0
 
 [node name="BasicBlock2" parent="TestMap/Title" instance=ExtResource("1_hi0vw")]
 transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, -1.5, 0, -1)
