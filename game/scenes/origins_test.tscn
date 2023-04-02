@@ -81,6 +81,7 @@ camera_attributes = SubResource("CameraAttributesPractical_veymd")
 [node name="TestMap" type="Node3D" parent="."]
 
 [node name="Title" type="Node3D" parent="TestMap"]
+visible = false
 
 [node name="Camera3d" type="Camera3D" parent="TestMap/Title"]
 keep_aspect = 0
@@ -182,6 +183,7 @@ block_style = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.73064, -1.20426, 1.76243)
 
 [node name="ShaderTest" type="Node3D" parent="TestMap"]
+visible = false
 
 [node name="Ground" parent="TestMap/ShaderTest" instance=ExtResource("1_hi0vw")]
 transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 15, -8, -1.25, 7.5)
