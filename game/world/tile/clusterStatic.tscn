@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0taqxcvjcbye"]
-
-[ext_resource type="Script" path="res://game/world/tile/cluster.gd" id="1_lel6y"]
-
-[node name="root" type="StaticBody3D"]
-script = ExtResource("1_lel6y")

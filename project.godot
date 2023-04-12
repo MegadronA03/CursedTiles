@@ -19,10 +19,6 @@ config/icon="res://dark_n.png"
 
 GlobalCustom="*res://globals.gd"
 
-[display]
-
-window/stretch/aspect="ignore"
-
 [dotnet]
 
 project/assembly_name="CursedTiles"
@@ -89,7 +85,6 @@ ui_h_back={
 
 [rendering]
 
-driver/threads/thread_model=2
 lights_and_shadows/directional_shadow/size=2048
 global_illumination/gi/use_half_resolution=true
 global_illumination/voxel_gi/quality=1
